@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: grebride-payment
+    env: prod
+  name: grebride-payment-svc
+  namespace: grebride-prod

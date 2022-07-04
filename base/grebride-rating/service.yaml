@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: grebride-rating
+  name: grebride-rating-svc
+  namespace: grebride
+spec:
+  ports:
+  - name: goatport
+    protocol: TCP
+    targetPort: 8080
+    port: 80
+  selector:
+    app: grebride-rating
+  type: NodePort

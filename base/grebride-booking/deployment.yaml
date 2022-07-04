@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grebride-booking
+  name: grebride-booking
+  namespace: grebride
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: grebride-booking
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: grebride-booking
+    spec:
+      containers:
+      - image: eurogig/kustomizegoat:0.1
+        name: grebride-booking
+

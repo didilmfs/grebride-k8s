@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grebride-largeapp-12
+  name: grebride-largeapp-12
+  namespace: grebride-largeapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: grebride-largeapp-12
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: grebride-largeapp-12
+    spec:
+      containers:
+      - image: eurogig/kustomizegoat:0.1
+        name: grebride-largeapp-12
+

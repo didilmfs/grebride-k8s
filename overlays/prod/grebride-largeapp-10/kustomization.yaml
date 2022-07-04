@@ -1,0 +1,48 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: grebride-largeapp
+
+bases:
+  - ../../../base/large-app-10
+
+patches:
+- path: deployment1.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-1
+- path: deployment2.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-2
+- path: deployment3.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-3
+- path: deployment4.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-4
+- path: deployment5.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-5
+- path: deployment6.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-6
+- path: deployment7.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-7
+- path: deployment8.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-8
+- path: deployment9.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-9
+- path: deployment10.yaml
+  target:
+    kind: Deployment
+    labelSelector: app=grebride-largeapp-10

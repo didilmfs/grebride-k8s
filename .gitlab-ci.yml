@@ -1,0 +1,40 @@
+stages:
+    - test
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+    
+checkov:
+  stage: test
+  allow_failure: false 
+  image:
+    name: bridgecrew/checkov:2.0.1174
+    entrypoint:
+      - '/usr/bin/env'
+      - 'PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+  rules:
+    - if: $SAST_DISABLED
+      when: never
+    - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+    - if: $CI_COMMIT_BRANCH && $CI_PIPELINE_SOURCE == 'merge_request_event'
+      exists:
+        - '**/*.yaml'
+  before_script:
+    - env | grep 'CI_JOB_STARTED_AT'
+  script:
+    - git diff origin/main
+    - export TD="$(git diff origin/main --name-only | grep '\.yaml$' | sed 's/\/[^/]\+\.yaml$\|//g' | uniq)"
+    - echo $TD
+    - |
+      for targetdir in ${TD[@]}; do
+        echo "Target Directory: $targetdir"
+        export RF="$(echo $targetdir | sed 's/\//-/g')"
+        echo "Report File: checkov-report-$RF.xml"
+        checkov -d $targetdir -o junitxml | tee checkov-report-$RF.xml
+      done
+  artifacts:
+    reports:
+      junit: 'checkov-report-*.xml'
+    paths:
+      - 'checkov-report-*.xml'

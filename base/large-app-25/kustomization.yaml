@@ -1,0 +1,55 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deployment1.yaml
+#  - service1.yaml
+  - deployment2.yaml
+#  - service2.yaml
+  - deployment3.yaml
+#  - service3.yaml
+  - deployment4.yaml
+#  - service4.yaml
+  - deployment5.yaml
+#  - service5.yaml
+  - deployment6.yaml
+#  - service6.yaml
+  - deployment7.yaml
+#  - service7.yaml
+  - deployment8.yaml
+#  - service8.yaml
+  - deployment9.yaml
+#  - service9.yaml
+  - deployment10.yaml
+#  - service10.yaml
+  - deployment11.yaml
+#  - service11.yaml
+  - deployment12.yaml
+#  - service12.yaml
+  - deployment13.yaml
+#  - service13.yaml
+  - deployment14.yaml
+#  - service14.yaml
+  - deployment15.yaml
+#  - service15.yaml
+  - deployment16.yaml
+#  - service11.yaml
+  - deployment17.yaml
+#  - service12.yaml
+  - deployment18.yaml
+#  - service13.yaml
+  - deployment19.yaml
+#  - service14.yaml
+  - deployment20.yaml
+#  - service15.yaml
+  - deployment21.yaml
+#  - service11.yaml
+  - deployment22.yaml
+#  - service12.yaml
+  - deployment23.yaml
+#  - service13.yaml
+  - deployment24.yaml
+#  - service14.yaml
+  - deployment25.yaml
+#  - service15.yaml
+

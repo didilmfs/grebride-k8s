@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: grebride-rating
+  name: grebride-rating
+  namespace: grebride
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: grebride-rating
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: grebride-rating
+    spec:
+      containers:
+      - image: eurogig/kustomizegoat:0.1
+        name: grebride-rating
+
